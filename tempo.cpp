@@ -1,41 +1,24 @@
-#include <iostream>
-#include <cmath>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int testCase, pointer;
-string num;
+long long input[1000];
 
-int printNum(string num)
-{
-    if (pointer == num.size())
-        return 0;
-
-    cout << num[pointer] << " ";
-    pointer++;
-    return printNum(num);
+long long Fib(long long n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    long long fibmn1 = Fib(n-1);
+    long long fibmn2 = Fib(n-2);
+    
+    long long fib = fibmn1 + fibmn2;
+    
+    return fib;
 }
 
-int prnt(int n)
-{
-    cin >> num;
-    pointer = 0;
-    printNum(num);
-    cout << '\n';
-    --n;
-    if (n)
-    {
-        prnt(n);
-    }
-    else
-    {
-        return 0;
-    }
-}
+int main(void) {
+    long long n;
+    cin >>n;
 
-int main(void)
-{
+    cout << Fib(n-1);
 
-    cin >> testCase;
-    prnt(testCase);
+    return 0;
 }

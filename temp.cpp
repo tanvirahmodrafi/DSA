@@ -1,38 +1,29 @@
-#include <iostream>
-#include <cmath>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int main()
+long long arr[101];
+double recursionSpace(long long inp[],long long n){
+	return (inp[n-1])/n;
+}
+
+
+int main(void)
 {
-	int arr1[5] = {2,3,4,6,9},
-		arr2[4] = {1,3,5,8};
-	
-	int n;
+	long long n,m,temp;
+	cin >> n;
+	long long c = n-m;
 
-	int sizeOfArr1 = sizeof(arr1)/sizeof(arr1[0]);
-	int sizeOfArr2 = sizeof(arr2)/sizeof(arr2[0]);
-
-	n = (sizeOfArr1 + sizeOfArr2);
-	int mergedArr[n];
-	int sizeOfMargeedArr = sizeof(mergedArr)/sizeof(mergedArr[0]);
-
-	for (int i = 0; i < sizeOfArr1; i++)
+	for (int i = 0; i < n; i++)
 	{
-		mergedArr[i] = arr1[i];
-	}
-	for (int i = n-sizeOfArr2,j = 0; i < n; i++,j++)
-	{
-		mergedArr[i] = arr2[j];
+		cin >> temp;
+		if(i == 0){
+			arr[i] = temp;
+		}else{
+			arr[i] = temp + arr[i-1];
+		}
 	}
 
-    sort(mergedArr, mergedArr + sizeOfMargeedArr);
-
-	for (int i = 0; i < sizeOfMargeedArr; i++){
-		cout << mergedArr[i] << " ";
-	}
+	cout<< fixed<<setprecision(6)<<recursionSpace(arr,n);
 	
-
-
-	return 0;
 }
