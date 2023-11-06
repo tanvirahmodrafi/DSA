@@ -1,29 +1,49 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
-long long arr[101];
-double recursionSpace(long long inp[],long long n){
-	return (inp[n-1])/n;
+
+long long factorial_of_r(long long r)
+{
+    long long fact=1;
+    for (long long i = 1;i <= r;i++)
+    {
+        fact *= i;
+    }
+    return fact;
+}
+
+long long combination(long long n, long long r)
+{
+    long long store = 1;
+    for (long long i = (n-r)+1;i <= n ;i++)
+    {
+        store *= i;
+    }
+    long long Ro = factorial_of_r(r);
+    long long ans = store / Ro;
+    return ans;
+}
+
+long long func(long long n, long long r)
+{
+    if (r == 0 || (n - r) == 0)
+    {
+        return 1;
+    }
+
+    else
+    {
+        return combination(n, r);
+    }
 }
 
 
-int main(void)
+int main()
 {
-	long long n,m,temp;
-	cin >> n;
-	long long c = n-m;
-
-	for (int i = 0; i < n; i++)
-	{
-		cin >> temp;
-		if(i == 0){
-			arr[i] = temp;
-		}else{
-			arr[i] = temp + arr[i-1];
-		}
-	}
-
-	cout<< fixed<<setprecision(6)<<recursionSpace(arr,n);
-	
+    long long n, r;
+    cin >> n >> r;
+    long long ans = func( n, r);
+    cout << ans << '\n';
 }
