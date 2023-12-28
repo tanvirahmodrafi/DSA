@@ -18,7 +18,7 @@ struct Node *insertAtFirst(struct Node *head, int value)
 struct Node *insertAtInBetween(struct Node *head, int value, int index)
 {
    struct Node *temp = new Node;
-   struct Node *t = head; // creating a dummy head
+   struct Node *t = head; 
    int i = 0;
    while (i != index - 1)
    {
@@ -48,9 +48,9 @@ struct Node *insertAtLast(struct Node *head, int value)
 void displayNode(struct Node *head)
 {
    while (head != NULL)
-   { // untill head is not
+   { 
       cout << head->value << '\n';
-      head = head->next; // Shifting the head to the next node
+      head = head->next;
    }
 }
 
@@ -70,7 +70,9 @@ struct Node *deleteAtTail(struct Node *head)
    point->next = NULL;
    return head;
 }
-
+struct Node* deleteNode(struct Node *head,int val){
+   
+}
 int main(void)
 {
    struct Node *head = NULL;
