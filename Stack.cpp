@@ -12,21 +12,21 @@ struct stacks* createStack(int value){
     stack-> arr = new int[stack->size];
     return stack;
 }
-
-void isEmpty(struct stacks * ptr){
+int isEmpty(struct stacks * ptr){
     if(ptr->top == -1){
         cout<< "empty\n";
-        return;
+        return 1;
     }
     cout << "Not empty\n";
+    return 0;
 }
-
-void isFull(struct stacks* ptr){
+int isFull(struct stacks* ptr){
     if (ptr->top == (ptr->size)-1){
         cout << "Stacks full\n";
-        return;
+        return 1;
     }
     cout<< "Stacks is not full\n";
+    return 0;
 }
 void push(struct stacks* ptr,int val){
     if(ptr->top == (ptr->size)-1){
@@ -50,21 +50,36 @@ void peek(struct stacks* ptr){
     }
     cout<<ptr->arr[ptr->top];
 }
-// void firstTolast(struct stacks* ptr){
-//     int temp = ptr->arr[ptr->top];
-//     int aer[ptr->size];
-//     aer[0] = temp;
-//     for (int i = 1; i < ptr->size; i++)
-//     {
-//         aer[i] = ptr->arr[i-1];
-//     }
-//     for (int i = 0; i < ptr->size; i++)
-//     {
-//         cout<<aer[i]<<' ';
-//     }
-    
-// }
+void display(struct stacks *ptr)
+{
+    for (int i = 0; i <= ptr->top; i++)
+    {
+        cout << ptr->arr[i] << " ";
+    }
+}
+void newpush(struct stacks* ptr, int value) {
+    if (isFull(ptr)) {
+        cout << "Full";
+        return;
+    }
 
+    push(ptr, value);
+    
+    sort(ptr->arr,ptr->arr+ptr->top+1);
+}
+void firstTolast(struct stacks* ptr){
+    int temp = ptr->arr[ptr->top];
+    int aer[ptr->size];
+    aer[0] = temp;
+    for (int i = 1; i < ptr->size; i++)
+    {
+        aer[i] = ptr->arr[i-1];
+    }
+    for (int i = 0; i < ptr->size; i++)
+    {
+        cout<<aer[i]<<' ';
+    }
+}
 int main(){
     struct stacks* ptr = createStack(4);
     push(ptr,2);
@@ -73,7 +88,5 @@ int main(){
     push(ptr,1);
     peek(ptr);
     // firstTolast(ptr);
-
-
 }
 
