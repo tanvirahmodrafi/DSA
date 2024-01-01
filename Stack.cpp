@@ -80,6 +80,7 @@ void firstTolast(struct stacks* ptr){
         cout<<aer[i]<<' ';
     }
 }
+
 int main(){
     struct stacks* ptr = createStack(4);
     push(ptr,2);
