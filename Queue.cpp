@@ -81,8 +81,8 @@ int main(void){
     enqueue(ptr,8);
     enqueue(ptr,0);
     enqueue(ptr,2);
-    // top(ptr);
+    top(ptr);
     // lastElement(ptr);
-    display(ptr);
+    //display(ptr);
 
 }
