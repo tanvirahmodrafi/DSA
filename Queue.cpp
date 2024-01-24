@@ -45,12 +45,12 @@ void dequeue(struct kew* ptr){
     ptr->occupied--;
 }
 
-void top(struct kew* ptr){
+int top(struct kew* ptr){
     if(isEmpty(ptr)){
         cout<<"Empty";
-        return;
+        return -1;
     }
-    cout<<ptr->arr[ptr->front % ptr->size];
+    return ptr->arr[ptr->front % ptr->size];
 }
 
 void lastElement(struct kew* ptr){
@@ -74,15 +74,33 @@ void display(struct kew* ptr){
         index = (index + 1)%ptr->size;
     } 
 }
-
+void push(kew* ptr,int val){
+    kew* newq = creatQueue(ptr->size);
+    enqueue(newq,val);
+    while(!isEmpty(ptr)){
+        enqueue(newq,top(ptr));
+        dequeue(ptr);
+    }
+    while(!isEmpty(newq)){
+        enqueue(ptr,top(newq));
+        dequeue(newq);
+    }
+}
 int main(void){
-    struct kew* ptr = creatQueue(4);
+    struct kew* ptr = creatQueue(5);
     enqueue(ptr,5);
     enqueue(ptr,8);
     enqueue(ptr,0);
     enqueue(ptr,2);
-    top(ptr);
-    // lastElement(ptr);
+    push(ptr,2);
+    //dequeue(ptr);
+    //top(ptr);
+     lastElement(ptr);
     //display(ptr);
+    // cout<<'\n';
+    // push(ptr,7);
+    // display(ptr);
+    // dequeue(ptr);
+    // display(ptr);
 
 }
