@@ -71,7 +71,18 @@ struct Node *deleteAtTail(struct Node *head)
    return head;
 }
 struct Node* deleteNode(struct Node *head,int val){
-   
+   if(head->value == val){
+      head = head->next;
+      return head;
+   }
+   struct Node *cur = head;
+   while(cur->next != NULL){
+      if (cur->next->value == val){
+         cur->next = cur->next->next;
+      }
+      cur = cur->next;
+   }
+   return head;
 }
 int main(void)
 {
